@@ -1,0 +1,9 @@
+name: "Search API Filepath Attachments"
+description: "Extract and index filepath fields file content."
+package: Search
+
+type: module
+core_version_requirement: ^9 || ^10
+
+dependencies:
+  - search_api:search_api_attachments
