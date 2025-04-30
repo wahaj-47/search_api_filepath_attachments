@@ -1,0 +1,12 @@
+{
+    "name": "drupal/search_api_filepath_attachments",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Muhammad Wahaj Hussain (wahaj-47)",
+            "homepage": "https://www.drupal.org/u/wahaj-47",
+            "email": "wahajhssn@gmail.com"
+        }
+    ]
+}
