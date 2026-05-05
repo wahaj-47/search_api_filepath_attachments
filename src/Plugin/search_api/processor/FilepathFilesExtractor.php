@@ -93,7 +93,7 @@ class FilepathFilesExtractor extends FilesExtractor
         $plugin_id,
         $plugin_definition
     ) {
-        return new static(
+        return new self(
             $configuration,
             $plugin_id,
             $plugin_definition,
@@ -190,8 +190,6 @@ class FilepathFilesExtractor extends FilesExtractor
                                             $file = $files ? reset($files) : NULL;
 
                                             if (!$file) {
-                                                \Drupal::logger('search_api_filepath_attachments')->debug('File not in db, creating new file: @value', ['@value' => $uri]);
-
                                                 $file = File::create([
                                                     'uri' => $uri,
                                                     'status' => 1,
