@@ -54,59 +54,15 @@ class FilepathFilesExtractor extends FilesExtractor
     /**
      * {@inheritdoc}
      */
-    public function __construct(
-        array $configuration,
-        $plugin_id,
-        array $plugin_definition,
-        TextExtractorPluginManager $text_extractor_plugin_manager,
-        ConfigFactoryInterface $config_factory,
-        EntityTypeManagerInterface $entity_type_manager,
-        KeyValueFactoryInterface $key_value,
-        ModuleHandlerInterface $module_handler,
-        FieldsHelperInterface $field_helper,
-        ExtractFileValidator $extractFileValidator,
-        LoggerInterface $logger,
-        StreamWrapperManager $stream_wrapper_manager
-    ) {
-        parent::__construct(
-            $configuration,
-            $plugin_id,
-            $plugin_definition,
-            $text_extractor_plugin_manager,
-            $config_factory,
-            $entity_type_manager,
-            $key_value,
-            $module_handler,
-            $field_helper,
-            $extractFileValidator,
-            $logger
-        );
-        $this->stream_wrapper_manager = $stream_wrapper_manager;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public static function create(
         ContainerInterface $container,
         array $configuration,
         $plugin_id,
         $plugin_definition
     ) {
-        return new self(
-            $configuration,
-            $plugin_id,
-            $plugin_definition,
-            $container->get('plugin.manager.search_api_attachments.text_extractor'),
-            $container->get('config.factory'),
-            $container->get('entity_type.manager'),
-            $container->get('keyvalue'),
-            $container->get('module_handler'),
-            $container->get('search_api.fields_helper'),
-            $container->get('search_api_attachments.extract_file_validator'),
-            $container->get('logger.channel.search_api_attachments'),
-            $container->get('stream_wrapper_manager')
-        );
+        $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+        $instance->stream_wrapper_manager = $container->get('stream_wrapper_manager');
+        return $instance;
     }
 
     /**
